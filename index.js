@@ -1,10 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
+app.use(cors());  // 👈 this line allows requests from your frontend
 
 const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
-  res.send('Hello from Render-deployed Express app!');
+  res.send('Hello from backend');
 });
 
 app.get('/greet', (req, res) => {
@@ -12,7 +15,6 @@ app.get('/greet', (req, res) => {
   res.json({ message: `Hello, ${name}!` });
 });
 
-
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
